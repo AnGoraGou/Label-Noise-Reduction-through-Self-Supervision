@@ -64,7 +64,6 @@ k_df['gt_label'] = k_df['gt_label'].apply(lambda x: x.numpy())
 k_df['gt_label'] = k_df['gt_label'].apply(lambda x: str(x).replace('[', '').replace(']', ''))
 # k_df["ps_label"] = ""
 print(k_df)
-exit()
 
 empty_col = pd.DataFrame(['']*len(k_df))
 k_df = k_df.insert(3, 'ps_label', empty_col.to_numpy().flatten())
