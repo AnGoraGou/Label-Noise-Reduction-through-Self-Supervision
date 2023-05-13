@@ -37,7 +37,7 @@ inSitu_id = df.index[df.label == 2].tolist()
 #print(len(benign_id))
 #print(len(inSitu_id))
 
-
+#initialisation for the noisy df
 df_Noisy = df
 print("Initialisation done for df_Noisy")
 
@@ -52,18 +52,14 @@ for idx in Norm_noisy_id:
         df_Noisy.at[idx, 'label'] = '3'
         print(f"{n*100}% of the Normal label has been converted to Invasive")
 
-
 Invasive_noisy = int(len(invasive_id) * n)
 print(Invasive_noisy)
 # exit()
 Inv_noisy_id = random.sample(invasive_id, Invasive_noisy) # sample randomly from 20% of the list
 
-
 for idx in Inv_noisy_id:
         df_Noisy.at[idx, 'label'] = '0'
         print(f"{n*100}% of the Invasive label has been converted to Normal")
-
-
 
 Benign_noisy = int(len(benign_id) * n)
 print(Benign_noisy)
@@ -76,10 +72,13 @@ for idx in Ben_noisy_id:
         df_Noisy.at[idx, 'label'] = '2'
         print(f"{n*100}% of the Invasive label has been converted to Normal")
 
-
-
         InSitu_noisy = int(len(inSitu_id) * n)
         print(InSitu_noisy)
+        Ins_noisy_id = random.sample(inSitu_id, InSitu_noisy) # sample randomly from 20% of the list
+        for idx in Ins_noisy_id:
+                df_Noisy.at[idx, 'label'] = '1'
+                print(f"{n*100}% of the Invasive label has been converted to Normal")
 
+noisy_csv_path = 'subrat/Data/noisy_bach_'+str(n)+'.csv'
+df_Noisy.to_csv(noisy_csv_path, index=False)
 
-pd.write('')
