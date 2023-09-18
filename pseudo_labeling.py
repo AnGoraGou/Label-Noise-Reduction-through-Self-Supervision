@@ -1,3 +1,7 @@
+#### This code is written to generate pseudo label generated from a model, that has been trained in semi-supervised learning manner
+# input  : imageset and it's noisy labelset 
+# output : certain sample choosen by the model
+
 import os
 import glob
 import torch
